@@ -46,9 +46,9 @@ const SignUpForm = () => {
       debugger;
       dispatch(signUpUser(user, navigate));
       localStorage.setItem("phone", user.user.phone);
-      localStorage.setItem("permission", true);
-      const permision = localStorage.getItem("permission");
-      console.log(permision, "permision in sign up form");
+      // localStorage.setItem("permission", true);
+      // const permision = localStorage.getItem("permission");
+      // console.log(permision, "permision in sign up form");
       debugger;
     },
   });

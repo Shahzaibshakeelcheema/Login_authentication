@@ -8,10 +8,9 @@ import {
   Routes,
   Route,
   Navigate,
-  useNavigate,
 } from "react-router-dom";
 import DashboardPage from "./components/Dashboard";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 function App() {
   // const user = useSelector((state) => state.auth.user);
@@ -33,6 +32,7 @@ function App() {
       console.log(isAuthenticated, "now it will be true session && authtoken ");
     } else {
       setIsAuthenticated(false);
+
       console.log(
         isAuthenticated,
         "now it will be false session && authtoken "
@@ -63,13 +63,13 @@ function App() {
       return <SignInForm />;
     }
   };
-  const DashboardComponent = () => {
-    if (permission === "false") {
-      return <DashboardPage />;
-    } else {
-      return <SignInForm />;
-    }
-  };
+  // const DashboardComponent = () => {
+  //   if (permission === "false") {
+  //     return <DashboardPage />;
+  //   } else {
+  //     return <SignInForm />;
+  //   }
+  // };
 
   return (
     <div className="App">
@@ -82,7 +82,7 @@ function App() {
             path="/dashboard"
             element={
               permission === "false" ? (
-                <DashboardComponent />
+                <DashboardPage />
               ) : (
                 <Navigate to="/signin" replace />
               )

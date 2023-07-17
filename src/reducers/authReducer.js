@@ -4,7 +4,7 @@ const initialState = {
 };
 debugger;
 const authReducer = (state = initialState, action) => {
-  // debugger;
+  debugger;
   switch (action.type) {
     case "SIGNUP_SUCCESS":
     case "PIN_VERIFY_SUCCESS":

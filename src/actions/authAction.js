@@ -46,6 +46,7 @@ export const verifyPin = (pinData, naviagte) => {
           localStorage.setItem("authToken", response.data.auth_token);
           localStorage.setItem("user", JSON.stringify(response.data));
           localStorage.setItem("session", response.data.user_status);
+          localStorage.setItem("permission", false);
 
           debugger;
           dispatch({ type: "PIN_VERIFY_SUCCESS", payload: response.data });
@@ -54,6 +55,11 @@ export const verifyPin = (pinData, naviagte) => {
         }
       })
       .catch((error) => {
+        if (error.response.status === 400) {
+          // console.log("User Already Registered");
+          alert(error.message, "Error Occured");
+          // localStorage.setItem("signedup", false);
+        }
         dispatch({ type: "PIN_VERIFY_ERROR", payload: error.message });
       });
   };
@@ -77,6 +83,11 @@ export const signInUser = (userData, naviagte) => {
         }
       })
       .catch((error) => {
+        if (error.response.status === 400) {
+          // console.log("User Already Registered");
+          alert(error.message, "Error Occured");
+          // localStorage.setItem("signedup", false);
+        }
         dispatch({ type: "SIGNIN_ERROR", payload: error.message });
       });
   };
@@ -98,12 +109,17 @@ export const signOutUser = (authToken, naviagte) => {
         config
       )
       .then((response) => {
-        // if (response.status === 200) {
-        dispatch({ type: "SIGNOUT_SUCCESS", payload: response.data });
-        naviagte("/signin");
-        // } // Invoke the callback function
+        if (response.status === 200) {
+          dispatch({ type: "SIGNOUT_SUCCESS", payload: response.data });
+          naviagte("/signin");
+        } // Invoke the callback function
       })
       .catch((error) => {
+        if (error.response.status === 400) {
+          // console.log("User Already Registered");
+          alert(error.message, "Error Occured");
+          // localStorage.setItem("signedup", false);
+        }
         dispatch({ type: "SIGNOUT_ERROR", payload: error.message });
       });
   };

@@ -10,17 +10,18 @@ const SignOutButton = () => {
   const handleSignOut = () => {
     const Token = localStorage.getItem("authToken"); // Retrieve the auth token from localStorage
     dispatch(signOutUser(Token, navigate));
-    {
-      /*() => {
-        // Callback function to be invoked after successful sign-out
-        navigate("/signin"); // Redirect to the desired page (e.g., homepage)
-      } */
-    }
+
+    /*() => {
+    // Callback function to be invoked after successful sign-out
+    navigate("/signin"); // Redirect to the desired page (e.g., homepage)
+  } */
     localStorage.removeItem("authToken");
     localStorage.removeItem("user");
     localStorage.removeItem("session");
     localStorage.removeItem("phone");
     localStorage.removeItem("permission");
+
+    // navigate("/signin");
   };
 
   return (

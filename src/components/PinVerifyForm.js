@@ -32,26 +32,11 @@ const PinVerifyForm = () => {
       };
 
       dispatch(verifyPin(pinData, navigate));
-      localStorage.setItem("permission", false);
       const permision = localStorage.getItem("permission");
       console.log(permision, "permision in verify");
       debugger;
     },
   });
-  // if (!isLoggedIn) {
-  //   // Redirect to signup if user is not logged in
-  //   navigate("/");
-  //   return null;
-  // }
-  // useEffect(() => {
-  //   // Check if the user has completed the signup process
-  //   const isSignupCompleted = false; // Replace with the appropriate logic to check signup completion
-
-  //   // If signup is not completed, redirect to the signup page
-  //   if (!isSignupCompleted) {
-  //     navigate("/");
-  //   }
-  // }, [navigate]);
 
   return (
     <div className="container">
